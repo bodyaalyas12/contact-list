@@ -1,8 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "dev";
-$password = "zuzenc1901";
-$dbname = "reacttest";
+require_once 'connection.php';
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
 $content = file_get_contents('php://input');
 
 // Create connection

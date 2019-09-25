@@ -3,7 +3,7 @@
 
 // $content = file_get_contents('php://input');
 // $data = json_decode($content,true);
-
+header('Access-Control-Allow-Origin: *');
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);

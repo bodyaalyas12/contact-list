@@ -1,17 +1,41 @@
 img {
 	border-radius: 50%;
 }
+body{
+	background-image: url('../../images/Address_book_1.jpg');
+	background-size: cover;
+	// background-position: fixed;
+}
+.jumbotron{
+	background-color:rgba(0, 0, 0, 0.4);
+}
+.contact-wrapper{
+	background-color:rgba(128, 214, 249, 0.6);
+	// width: 40%;
+	border-radius: 30px;
+
+}
 .name{
 	font-weight: bold;
 	font-size: 20px;
 }
 .main-wrapper{
-	border: 1px solid gray;
+	// border: 1px solid gray;
 	border-radius: 30px;
+	min-height: 220px;
 }
 .actions{
 
 }
 li {
 	list-style: none;
+	 // width: 40%;
+	 // margin: 10px 20px;
+	// display: block;
+}
+.contact-item {
+
+}
+ul{
+	padding:0;
 }

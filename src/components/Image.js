@@ -7,9 +7,13 @@ class Image extends Component {
 		super(props)
 	}
 	render() {
+		// console.log(this.props.contacts.imgurl)
+		let pic
+		if(this.props.contacts.imgurl) pic = require('./'+this.props.contacts.imgurl);
+			// console.log(pic)
 		return (
-			
-			<img alt='Logo'  src={logo} />
+
+			<img alt='Picture'  src={pic} />
 			
 		)
 	}
