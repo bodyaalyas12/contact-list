@@ -4,6 +4,7 @@ class Modal extends Component {
 	constructor(props){
 		super(props)
 	}
+	
 	render(){
 		const {contact,clickHandler} = this.props
 		
@@ -26,7 +27,7 @@ class Modal extends Component {
 			      </div>
 			      <div className="modal-footer">
 			        <button type="button" className="btn btn-secondary" data-dismiss="modal">No,close</button>
-			        <button type="button" onClick={clickHandler} data-dismiss="modal" className="btn btn-danger">Yes,delete</button>
+			        <button type="button" data={contact.id} onClick={clickHandler} data-dismiss="modal" className="btn btn-danger">Yes,delete</button>
 			      </div>
 			    </div>
 			  </div>

@@ -2,7 +2,7 @@
 require_once 'connection.php';
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
-	// Header add Access-Control-Allow-Headers: "origin, x-requested-with, content-type"
+
 $content = file_get_contents('php://input');
 $data = json_decode($content,true);
 
