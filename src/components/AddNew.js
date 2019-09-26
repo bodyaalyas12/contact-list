@@ -8,10 +8,7 @@ class AddNew extends Component {
 			console.log(fileInput.files[0])
 		}
 	}
-
 	
-
-
 	render(){
 		const {addClickHandler} = this.props
 		const content = 

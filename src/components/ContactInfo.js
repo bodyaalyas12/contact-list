@@ -7,21 +7,13 @@ class ContactInfo extends Component {
 		super(props)
 
 	}
-	render() {
-		 
-		
-		
+	render() {		
 			const content = 
 			 			<div className='d-flex  flex-column'>
 							<div className='text-center name'>{this.props.contacts.name}</div>
 					   		<div className='text-center phone'>{this.props.contacts.phone}</div>
 					   	</div>
-				
-	
-			
-			
-		
-		return (
+	return (
 			<div>
 			{content}
 			</div>

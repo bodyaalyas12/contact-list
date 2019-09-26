@@ -4,15 +4,11 @@ class Modal extends Component {
 	constructor(props){
 		super(props)
 	}
-	
+
 	render(){
-		const {contact,clickHandler} = this.props
-		
-		const id = "exampleModal"+contact.id
-		
-
+		const {contact,clickHandler} = this.props	
+		const id = "exampleModal"+contact.id		
 		return(
-
 			<div className="modal fade" id={id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div className="modal-dialog" role="document">
 			    <div className="modal-content">

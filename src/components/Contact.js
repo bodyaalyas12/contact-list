@@ -17,8 +17,6 @@ class Contact extends Component {
 			contact : this.props.contact
 
 		}
-		
-		
 
 		this.editClickHandler = () => {
 			if(this.state.status=='edit'){
@@ -36,7 +34,7 @@ class Contact extends Component {
 			}
 
 			this.setState({
-				status:this.state.status == 'edit'? 'show':'edit',
+				status:this.state.status == 'edit'? 'show':'edit', //change status from show to edit 
 
 			})
 
