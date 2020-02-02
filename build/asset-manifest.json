@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.fab6bc0d.chunk.css",
-    "main.js": "/static/js/main.8d974e72.chunk.js",
-    "main.js.map": "/static/js/main.8d974e72.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.0b3b2930.js",
-    "runtime-main.js.map": "/static/js/runtime-main.0b3b2930.js.map",
-    "static/css/2.22a7d4ef.chunk.css": "/static/css/2.22a7d4ef.chunk.css",
-    "static/js/2.0ad75f82.chunk.js": "/static/js/2.0ad75f82.chunk.js",
-    "static/js/2.0ad75f82.chunk.js.map": "/static/js/2.0ad75f82.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.ffe431173098ac8add2e5a149d98b561.js": "/precache-manifest.ffe431173098ac8add2e5a149d98b561.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.22a7d4ef.chunk.css.map": "/static/css/2.22a7d4ef.chunk.css.map",
-    "static/css/main.fab6bc0d.chunk.css.map": "/static/css/main.fab6bc0d.chunk.css.map",
-    "static/media/style.scss": "/static/media/Address_book_1.f697cb3f.jpg"
+    "main.css": "/contact-list/static/css/main.9a3d1769.chunk.css",
+    "main.js": "/contact-list/static/js/main.cd8f87b8.chunk.js",
+    "main.js.map": "/contact-list/static/js/main.cd8f87b8.chunk.js.map",
+    "runtime-main.js": "/contact-list/static/js/runtime-main.2482ce96.js",
+    "runtime-main.js.map": "/contact-list/static/js/runtime-main.2482ce96.js.map",
+    "static/css/2.9dafe002.chunk.css": "/contact-list/static/css/2.9dafe002.chunk.css",
+    "static/js/2.3984addd.chunk.js": "/contact-list/static/js/2.3984addd.chunk.js",
+    "static/js/2.3984addd.chunk.js.map": "/contact-list/static/js/2.3984addd.chunk.js.map",
+    "index.html": "/contact-list/index.html",
+    "precache-manifest.2a1c9beacbf087a524127bbf287ed842.js": "/contact-list/precache-manifest.2a1c9beacbf087a524127bbf287ed842.js",
+    "service-worker.js": "/contact-list/service-worker.js",
+    "static/css/2.9dafe002.chunk.css.map": "/contact-list/static/css/2.9dafe002.chunk.css.map",
+    "static/css/main.9a3d1769.chunk.css.map": "/contact-list/static/css/main.9a3d1769.chunk.css.map",
+    "static/media/style.scss": "/contact-list/static/media/Address_book_1.f697cb3f.jpg"
   }
 }
