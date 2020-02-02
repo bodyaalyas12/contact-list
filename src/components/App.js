@@ -4,14 +4,16 @@ import './scss/style.scss'
 import Contact from './Contact'
 import AddNew from './AddNew'
 import $ from 'jquery'
-import { useSpring, animated } from 'react-spring'
+import host from '../host'
+
+
 
 const App = props => {
 	const [state, setState] = useState({
 		externalData: null,
 		addNew: false
 	})
-
+	console.log(host)
 	const addClickHandler = async () => {
 		let name = document.getElementById('add-name').value
 		let phone = document.getElementById('add-phone').value
@@ -22,7 +24,7 @@ const App = props => {
 				const fd = new FormData()
 				fd.append('img', img.files[0])
 				$.ajax({
-					url: `http://testtask123123.dx.am/src/api/uploader.php`,
+					url: `${host}/uploader.php`,
 					method: 'POST',
 					data: fd,
 					contentType: false,
@@ -41,17 +43,21 @@ const App = props => {
 				imgurl: img.files[0] ? img.files[0].name : ''
 			}
 
-			fetch(`http://testtask123123.dx.am/src/api/add.php`, {
+			fetch(`${host}/add.php`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(objToSend)
-			}).then(()=>getDataFetch())
+			})
+			.then(()=>{
+				document.getElementById('add-name').value = ''
+				document.getElementById('add-phone').value = ''
+				document.getElementById('add-info').value = ''
+				document.getElementById('add-img').value = null //clear inputs after sending request
+			})
+			.then(()=>getDataFetch())
 
 			
-			document.getElementById('add-name').value = ''
-			document.getElementById('add-phone').value = ''
-			document.getElementById('add-info').value = ''
-			document.getElementById('add-img').value = null //clear inputs after sending request
+			
 		} else {
 			alert('Name and phone are required')
 		}
@@ -70,7 +76,7 @@ const App = props => {
 	}
 
 	const deleteDataFetch = async id => {
-		fetch(`http://testtask123123.dx.am/src/api/delete.php`, {
+		fetch(`${host}/delete.php`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: id
@@ -79,7 +85,7 @@ const App = props => {
 
 	const getDataFetch = async () => {
 		console.log('fetching')
-		const targetUrl = `http://testtask123123.dx.am/src/api/demo.php`
+		const targetUrl = `${host}/demo.php`
 		fetch(targetUrl, {
 			method: 'GET'
 		})

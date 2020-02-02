@@ -11,6 +11,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 		contact: props.contact
 	})
 	const editDataFetch = async contact => {
+		
 		fetch(`http://testtask123123.dx.am/src/api/edit.php`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
