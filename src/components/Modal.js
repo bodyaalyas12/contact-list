@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({contact,clickHandler,...restProps}) => {
+const Modal = ({contact,deleteClickHandler}) => {
 		const id = "exampleModal"+contact.id		
 		return(
 			<div className="modal fade" id={id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -17,7 +17,7 @@ const Modal = ({contact,clickHandler,...restProps}) => {
 			      </div>
 			      <div className="modal-footer">
 			        <button type="button" className="btn btn-secondary" data-dismiss="modal">No,close</button>
-			        <button type="button" data={contact.id} onClick={clickHandler} data-dismiss="modal" className="btn btn-danger">Yes,delete</button>
+			        <button type="button" data={contact.id} onClick={deleteClickHandler} data-dismiss="modal" className="btn btn-danger">Yes,delete</button>
 			      </div>
 			    </div>
 			  </div>
