@@ -17,7 +17,7 @@ const Modal = ({contact,deleteClickHandler}) => {
 			      </div>
 			      <div className="modal-footer">
 			        <button type="button" className="btn btn-secondary" data-dismiss="modal">No,close</button>
-			        <button type="button" data={contact.id} onClick={deleteClickHandler} data-dismiss="modal" className="btn btn-danger">Yes,delete</button>
+			        <button type="button" onClick={(e)=>deleteClickHandler(contact._id)} data-dismiss="modal" className="btn btn-danger">Yes,delete</button>
 			      </div>
 			    </div>
 			  </div>

@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
-import { useSpring, useTransition, animated } from 'react-spring'
+import host from '../host'
+import { animated, useTransition } from 'react-spring'
+import { setContacts } from '../store/actionCreators'
+import { connect } from 'react-redux'
 
-const AddNew = ({ addClickHandler }) => {
+const AddNew = ({ setContacts }) => {
 	const [show, setShow] = useState(false)
+	const [form, setForm] = useState({
+		name: '',
+		phone: '',
+		info: '',
+		image: {}
+	})
 	const animatedProps = useTransition(show, null, {
 		config: { duration: 500 },
 		from: {
@@ -20,7 +29,32 @@ const AddNew = ({ addClickHandler }) => {
 	})
 	const addNewToggler = () => {
 		setShow(show => !show)
-		// console.log(show)
+	}
+	const handleData = ({ target }) => {
+		const { name, value } = target
+		setForm({
+			...form,
+			[name]: value
+		})
+	}
+	const addClickHandler = () => {
+		const fd = new FormData(form)
+		fd.append('image', form.image)
+		fd.append('form', JSON.stringify(form))
+		fetch(`${host}/contacts/create`, {
+			body: fd,
+			method: 'POST'
+		})
+			.then(response => response.json())
+			.then(() => {
+				setContacts()
+			})
+	}
+	const handleImage = ({ target }) => {
+		setForm({
+			...form,
+			image: target.files[0]
+		})
 	}
 
 	return (
@@ -44,9 +78,10 @@ const AddNew = ({ addClickHandler }) => {
 								</label>
 								<input
 									type="text"
-									id="add-name"
 									className={'form-control'}
-									required
+									value={form.name}
+									name={'name'}
+									onChange={handleData}
 									placeholder="John Doe"
 								/>
 							</div>
@@ -57,28 +92,32 @@ const AddNew = ({ addClickHandler }) => {
 								</label>
 								<input
 									type="text"
-									id="add-phone"
 									className={'form-control'}
 									required
+									value={form.phone}
+									name={'phone'}
+									onChange={handleData}
 									placeholder="8-800-555-35-35"
 								/>
 							</div>
 							<div className={'form-group d-flex align-items-center'}>
 								<textarea
 									type="text"
-									id="add-info"
 									className={'form-control'}
 									size="40"
+									value={form.info}
+									name={'info'}
+									onChange={handleData}
 									placeholder="Additional information"
 								/>
 							</div>
 							<div className={'form-group d-flex align-items-center'}>
 								<input
 									type="file"
-									id="add-img"
 									className={''}
 									accept="image/*"
 									placeholder="image"
+									onChange={handleImage}
 								/>
 							</div>
 							<button className="btn btn-success" onClick={addClickHandler}>
@@ -90,4 +129,14 @@ const AddNew = ({ addClickHandler }) => {
 		</div>
 	)
 }
-export default AddNew
+
+const mapStateToProps = (state, props) => ({
+	...props,
+	contacts: state.contacts
+})
+
+const mapDispatchToProps = dispatch => ({
+	setContacts: () => dispatch(setContacts())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddNew)

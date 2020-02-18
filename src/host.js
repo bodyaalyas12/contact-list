@@ -1,1 +1,1 @@
-export default 'https://contact-list-api12.herokuapp.com/'
+export default process.env.NODE_ENV ==='development' ? 'http://localhost:4000' : 'https://contact-list-api-node.herokuapp.com'

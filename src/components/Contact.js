@@ -1,36 +1,35 @@
-import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
-import './scss/style.scss'
+import React, { useState } from 'react'
+import { animated, useTransition } from 'react-spring'
 import Modal from './Modal'
-import { useSpring, useTransition, animated } from 'react-spring'
+import host from '../host'
+import './scss/style.scss'
+import { setContacts } from '../store/actionCreators'
+import { connect } from 'react-redux'
 
 const Contact = ({ deleteClickHandler, ...props }) => {
 	const [state, setState] = useState({
 		isEditing: false,
-		contact: props.contact
+		contact: props.contact || {}
 	})
 	const editDataFetch = async contact => {
-		
-		fetch(`http://testtask123123.dx.am/src/api/edit.php`, {
-			method: 'POST',
+		fetch(`${host}/contacts/update/${contact._id}`, {
+			method: 'PATCH',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(contact)
+			body: JSON.stringify(contact),
 		})
+			.then(response => response.json())
+			.then(response => console.log(response))
 	}
-	const editClickHandler = e => {
+	const editClickHandler = (event, contact) => {
 		if (state.isEditing) {
-			const newContact = { ...state.contact }
-			newContact.name = document.getElementById('name-input' + props.contact.id).value
-			newContact.phone = document.getElementById('phone-input' + props.contact.id).value
-			newContact.info = document.getElementById('info-input' + props.contact.id).value
-			if (newContact.name !== '' && newContact.phone !== '') {
+			if (contact.name && contact.phone) {
 				setState({
 					...state,
-					contact: newContact,
 					isEditing: !state.isEditing
 				})
-				editDataFetch(newContact)
+				editDataFetch(contact)
 			}
 		} else {
 			setState({
@@ -38,6 +37,17 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 				isEditing: !state.isEditing
 			})
 		}
+	}
+
+	const handleForm = ({ target }) => {
+		const { name, value } = target
+		setState({
+			...state,
+			contact: {
+				...contact,
+				[name]: value
+			}
+		})
 	}
 	const transitions = useTransition(state.isEditing, null, {
 		from: {
@@ -53,6 +63,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 			opacity: 0
 		}
 	})
+
 	const { contact } = state
 	return transitions.map(({ item, key, props }) => (
 		<div key={key} className=" mr-4 contact-wrapper position-relative">
@@ -63,7 +74,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 				>
 					<div className="d-flex flex-row flex-wrap justify-content-between ">
 						<div className="image-wrapper">
-							<img alt="contact avatar" src={`/images/${contact.imgurl}`} />
+							<img alt="contact avatar" src={`${host}/${contact.image}`} />
 						</div>
 						<div className="contactInfo  d-flex align-items-center">
 							<div className="d-flex  flex-column">
@@ -72,7 +83,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 							</div>
 						</div>
 						<div className="actions d-flex pr-3 align-items-center justify-content-center">
-							<button className="mr-3 btn btn-info" onClick={b => editClickHandler(b)}>
+							<button className="mr-3 btn btn-info" onClick={editClickHandler}>
 								Edit
 							</button>
 							<button
@@ -95,7 +106,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 				>
 					<div className="d-flex flex-row  justify-content-between ">
 						<div className="image-wrapper">
-							<img alt="contact avatar" src={`/images/${contact.imgurl}`} />
+							<img alt="contact avatar" src={`${host}/${contact.image}`} />
 						</div>
 						<div className="contactInfo  d-flex align-items-center">
 							<div className="d-flex  flex-column">
@@ -103,22 +114,23 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 									<input
 										type="text"
 										id={'name-input' + contact.id}
-										required
-										defaultValue={contact.name}
+										name={'name'}
+										onChange={handleForm}
+										value={contact.name}
 									/>
 								</div>
 								<div className="text-center phone">
 									<input
 										type="text"
-										id={'phone-input' + contact.id}
-										required
+										onChange={handleForm}
+										name={'phone'}
 										defaultValue={contact.phone}
 									/>
 								</div>
 							</div>
 						</div>
 						<div className="actions d-flex pr-3 align-items-center justify-content-center">
-							<button className="mr-3 btn btn-success" index={1} onClick={editClickHandler}>
+							<button className="mr-3 btn btn-success" onClick={e => editClickHandler(e, contact)}>
 								Save
 							</button>
 						</div>
@@ -126,9 +138,10 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 					<div className="additionalInfo d-flex  justify-content-center align-items-between">
 						<textarea
 							type="text"
-							id={'info-input' + contact.id}
 							placeholder="Info"
-							defaultValue={contact.info}
+							name={'info'}
+							onChange={handleForm}
+							value={contact.info}
 						/>
 					</div>
 				</animated.div>
@@ -136,4 +149,14 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 		</div>
 	))
 }
-export default Contact
+
+const mapStateToProps = (state, props) => ({
+	...props,
+	contacts: state.contacts
+})
+
+const mapDispatchToProps = dispatch => ({
+	setContacts: () => dispatch(setContacts())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact)
