@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
-import host from '../host'
-import { animated, useTransition } from 'react-spring'
-import { setContacts } from '../store/actionCreators'
 import { connect } from 'react-redux'
+import { animated, useTransition } from 'react-spring'
+import host from '../host'
+import { setContacts } from '../store/actionCreators'
+
+const initialForm = {
+	name: '',
+	phone: '',
+	info: '',
+	image: '',
+	imgPreview: ''
+}
 
 const AddNew = ({ setContacts }) => {
 	const [show, setShow] = useState(false)
-	const [form, setForm] = useState({
-		name: '',
-		phone: '',
-		info: '',
-		image: {}
-	})
+	const [form, setForm] = useState(initialForm)
+	const [imgPreview, setImgPreview] = useState('')
 	const animatedProps = useTransition(show, null, {
 		config: { duration: 500 },
 		from: {
@@ -19,7 +23,7 @@ const AddNew = ({ setContacts }) => {
 			opacity: 0
 		},
 		enter: {
-			height: 300,
+			height: 350,
 			opacity: 1
 		},
 		leave: {
@@ -47,16 +51,23 @@ const AddNew = ({ setContacts }) => {
 		})
 			.then(response => response.json())
 			.then(() => {
+				setForm(initialForm)
+				document.querySelector('#image_input').value = null
+				setImgPreview('')
 				setContacts()
 			})
 	}
 	const handleImage = ({ target }) => {
+		const reader = new FileReader()
+		reader.onloadend = kek => {
+			setImgPreview(reader.result)
+		}
+		reader.readAsDataURL(target.files[0])
 		setForm({
 			...form,
 			image: target.files[0]
 		})
 	}
-
 	return (
 		<div id="header-add" className="d-flex flex-column">
 			<div className="d-flex justify-content-start">
@@ -112,9 +123,15 @@ const AddNew = ({ setContacts }) => {
 								/>
 							</div>
 							<div className={'form-group d-flex align-items-center'}>
+								{imgPreview && <img id={'previewImage'} src={imgPreview} />}
+								<label className={'btn btn-primary ml-3'} htmlFor="image_input">
+									Choose the image
+								</label>
+
 								<input
 									type="file"
 									className={''}
+									id="image_input"
 									accept="image/*"
 									placeholder="image"
 									onChange={handleImage}

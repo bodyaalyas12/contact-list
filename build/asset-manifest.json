@@ -1,18 +1,26 @@
 {
   "files": {
-    "main.css": "/contact-list/static/css/main.9a3d1769.chunk.css",
-    "main.js": "/contact-list/static/js/main.8e3e8da7.chunk.js",
-    "main.js.map": "/contact-list/static/js/main.8e3e8da7.chunk.js.map",
-    "runtime-main.js": "/contact-list/static/js/runtime-main.2482ce96.js",
-    "runtime-main.js.map": "/contact-list/static/js/runtime-main.2482ce96.js.map",
-    "static/css/2.9dafe002.chunk.css": "/contact-list/static/css/2.9dafe002.chunk.css",
-    "static/js/2.3984addd.chunk.js": "/contact-list/static/js/2.3984addd.chunk.js",
-    "static/js/2.3984addd.chunk.js.map": "/contact-list/static/js/2.3984addd.chunk.js.map",
+    "main.css": "/contact-list/static/css/main.b6556f70.chunk.css",
+    "main.js": "/contact-list/static/js/main.499e9a90.chunk.js",
+    "main.js.map": "/contact-list/static/js/main.499e9a90.chunk.js.map",
+    "runtime-main.js": "/contact-list/static/js/runtime-main.21474574.js",
+    "runtime-main.js.map": "/contact-list/static/js/runtime-main.21474574.js.map",
+    "static/css/2.67123b20.chunk.css": "/contact-list/static/css/2.67123b20.chunk.css",
+    "static/js/2.10afe05d.chunk.js": "/contact-list/static/js/2.10afe05d.chunk.js",
+    "static/js/2.10afe05d.chunk.js.map": "/contact-list/static/js/2.10afe05d.chunk.js.map",
     "index.html": "/contact-list/index.html",
-    "precache-manifest.54e904aff5a7f5700796fffb791f5f3d.js": "/contact-list/precache-manifest.54e904aff5a7f5700796fffb791f5f3d.js",
+    "precache-manifest.aa3e3be22a2e688ea027147ecb6283b3.js": "/contact-list/precache-manifest.aa3e3be22a2e688ea027147ecb6283b3.js",
     "service-worker.js": "/contact-list/service-worker.js",
-    "static/css/2.9dafe002.chunk.css.map": "/contact-list/static/css/2.9dafe002.chunk.css.map",
-    "static/css/main.9a3d1769.chunk.css.map": "/contact-list/static/css/main.9a3d1769.chunk.css.map",
+    "static/css/2.67123b20.chunk.css.map": "/contact-list/static/css/2.67123b20.chunk.css.map",
+    "static/css/main.b6556f70.chunk.css.map": "/contact-list/static/css/main.b6556f70.chunk.css.map",
+    "static/js/2.10afe05d.chunk.js.LICENSE.txt": "/contact-list/static/js/2.10afe05d.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/contact-list/static/media/Address_book_1.f697cb3f.jpg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.21474574.js",
+    "static/css/2.67123b20.chunk.css",
+    "static/js/2.10afe05d.chunk.js",
+    "static/css/main.b6556f70.chunk.css",
+    "static/js/main.499e9a90.chunk.js"
+  ]
 }

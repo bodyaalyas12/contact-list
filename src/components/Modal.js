@@ -1,28 +1,46 @@
 import React from 'react'
 
-const Modal = ({contact,deleteClickHandler}) => {
-		const id = "exampleModal"+contact.id		
-		return(
-			<div className="modal fade" id={id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div className="modal-dialog" role="document">
-			    <div className="modal-content">
-			      <div className="modal-header">
-			        <h5 className="modal-title" id="exampleModalLabel">Delete confirmation</h5>
-			        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div className="modal-body">
-			        Are you sure want to delete <b>{contact.name}</b> from contact list?
-			      </div>
-			      <div className="modal-footer">
-			        <button type="button" className="btn btn-secondary" data-dismiss="modal">No,close</button>
-			        <button type="button" onClick={(e)=>deleteClickHandler(contact._id)} data-dismiss="modal" className="btn btn-danger">Yes,delete</button>
-			      </div>
-			    </div>
-			  </div>
+const Modal = ({ contact, deleteClickHandler }) => {
+	console.log(contact.name)
+	const id = 'exampleModal' + contact._id
+	return (
+		<div
+			className="modal fade"
+			id={id}
+			tabIndex="-1"
+			role="dialog"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div className="modal-dialog" role="document">
+				<div className="modal-content">
+					<div className="modal-header">
+						<h5 className="modal-title" id="exampleModalLabel">
+							Delete confirmation
+						</h5>
+						<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div className="modal-body">
+						Are you sure want to delete <b>{contact.name}</b> from contact list?
+					</div>
+					<div className="modal-footer">
+						<button type="button" className="btn btn-secondary" data-dismiss="modal">
+							No,close
+						</button>
+						<button
+							type="button"
+							onClick={e => deleteClickHandler(contact._id)}
+							data-dismiss="modal"
+							className="btn btn-danger"
+						>
+							Yes,delete
+						</button>
+					</div>
+				</div>
 			</div>
-			)
-
+		</div>
+	)
 }
 export default Modal

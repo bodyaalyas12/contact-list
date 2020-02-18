@@ -8,7 +8,7 @@ import './scss/style.scss'
 import { setContacts } from '../store/actionCreators'
 
 const App = ({ contacts, setContacts, ...props }) => {
-	const deleteDataFetch =  id => {
+	const deleteDataFetch = id => {
 		fetch(`${host}/contacts/delete/${id}`, {
 			method: 'DELETE',
 			body: JSON.stringify(id)
@@ -32,16 +32,20 @@ const App = ({ contacts, setContacts, ...props }) => {
 				</div>
 			</div>
 			<div className={'container'}>
-				<ul className="d-flex flex-row align-items-center justify-content-center flex-wrap">
+				<div className={'row'}>
 					{contacts.map(
 						contact =>
 							contact.name && (
-								<li key={contact._id}>
-									<Contact deleteClickHandler={deleteDataFetch} contact={contact} />{' '}
-								</li>
+								<div className={'col-12 col-lg-6 '}>
+									<Contact
+										key={contact._id}
+										deleteClickHandler={deleteDataFetch}
+										contact={contact}
+									/>
+								</div>
 							)
 					)}
-				</ul>
+				</div>
 			</div>
 		</div>
 	)

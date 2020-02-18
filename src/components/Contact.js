@@ -66,11 +66,11 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 
 	const { contact } = state
 	return transitions.map(({ item, key, props }) => (
-		<div key={key} className=" mr-4 contact-wrapper position-relative">
+		<div key={key} className="contact-wrapper position-relative">
 			{!item ? (
 				<animated.div
 					style={props}
-					className="pt-2 px-4 my-3 mr-5 contact-wrapper  d-flex flex-column justify-content-center align-items-between main-wrapper  w-100"
+					className="pt-2 px-4 my-3 mr-5  d-flex flex-column justify-content-center align-items-between main-wrapper  w-100"
 				>
 					<div className="d-flex flex-row flex-wrap justify-content-between ">
 						<div className="image-wrapper">
@@ -87,7 +87,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 								Edit
 							</button>
 							<button
-								data-target={'#exampleModal' + contact.id}
+								data-target={'#exampleModal' + contact._id}
 								data-toggle="modal"
 								className="btn btn-danger"
 								type="button"
@@ -102,7 +102,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 			) : (
 				<animated.div
 					style={props}
-					className=" pt-2 px-4 my-3 mr-5 d-flex flex-column contact-wrapper justify-content-center align-items-between main-wrapper w-100"
+					className=" pt-2 px-4 my-3 mr-5 d-flex flex-column  justify-content-center align-items-between main-wrapper w-100"
 				>
 					<div className="d-flex flex-row  justify-content-between ">
 						<div className="image-wrapper">
@@ -115,6 +115,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 										type="text"
 										id={'name-input' + contact.id}
 										name={'name'}
+										className={'form-control'}
 										onChange={handleForm}
 										value={contact.name}
 									/>
@@ -122,6 +123,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 								<div className="text-center phone">
 									<input
 										type="text"
+										className={'form-control'}
 										onChange={handleForm}
 										name={'phone'}
 										defaultValue={contact.phone}
@@ -140,6 +142,7 @@ const Contact = ({ deleteClickHandler, ...props }) => {
 							type="text"
 							placeholder="Info"
 							name={'info'}
+							className={'form-control'}
 							onChange={handleForm}
 							value={contact.info}
 						/>
