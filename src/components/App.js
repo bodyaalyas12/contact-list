@@ -36,12 +36,8 @@ const App = ({ contacts, setContacts, ...props }) => {
 					{contacts.map(
 						contact =>
 							contact.name && (
-								<div className={'col-12 col-lg-6 '}>
-									<Contact
-										key={contact._id}
-										deleteClickHandler={deleteDataFetch}
-										contact={contact}
-									/>
+								<div key={contact._id} className={'col-12 col-lg-6 '}>
+									<Contact deleteClickHandler={deleteDataFetch} contact={contact} />
 								</div>
 							)
 					)}
