@@ -5,7 +5,7 @@
   "homepage": "https://bodyaalyas12.github.io/contact-list/",
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "node-sass": "^4.13.1",
     "popper.js": "^1.15.0",
     "react": "^16.9.0",
